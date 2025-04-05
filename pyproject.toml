@@ -1,19 +1,26 @@
-[project]
+[tool.poetry]
 name = "cw-2-hh-ru"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "RVlad",email = "reshetov664@gmail.com"}
-]
+authors = ["RVlad <reshetov66@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.13"
-dependencies = [
-]
+packages = [{include = "src"}]
 
-[tool.poetry]
-packages = [{include = "cw_2"}]
+[tool.poetry.dependencies]
+python = ">=3.13"
+requests = "^2.32.3"
+pandas = "^2.2.3"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+pytest-cov = "^6.1.0"
+
+
+[tool.poetry.group.lint.dependencies]
+isort = "^6.0.1"
+black = "^25.1.0"
+mypy = "^1.15.0"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
