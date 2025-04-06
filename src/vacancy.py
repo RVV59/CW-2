@@ -2,6 +2,7 @@ from typing import List, Dict
 
 
 class Vacancy:
+    '''представляет одну вакансию с атрибутами'''
     __slots__ = ('title', 'url', 'salary_from', 'salary_to', 'description', 'requirements')
 
     def __init__(self, title: str, url: str, salary_from: int, salary_to: int,
@@ -25,12 +26,12 @@ class Vacancy:
         if not isinstance(other, Vacancy):
             return NotImplemented
         return (
-            self.title == other.title
-            and self.url == other.url
-            and self.salary_from == other.salary_from
-            and self.salary_to == other.salary_to
-            and self.description == other.description
-            and self.requirements == other.requirements
+                self.title == other.title
+                and self.url == other.url
+                and self.salary_from == other.salary_from
+                and self.salary_to == other.salary_to
+                and self.description == other.description
+                and self.requirements == other.requirements
         )
 
     def __repr__(self):

@@ -11,8 +11,6 @@ def user_interaction():
     search_query = input("Введите поисковый запрос: ")
     top_n = int(input("Введите количество вакансий для вывода: "))
     filter_words = input("Введите ключевые слова через пробел: ").split()
-
-    # Новый ввод для диапазона зарплат
     salary_range = input("Введите диапазон зарплат (например, 'от 50000 до 150000'): ")
 
     try:
@@ -21,14 +19,12 @@ def user_interaction():
         print("Ошибка ввода диапазона зарплат! Попробуйте снова.")
         exit()
 
-    # Получение и сохранение вакансий
     hh_vacancies = hh_api.get_vacancies(search_query)
     vacancies = Vacancy.cast_to_object_list(hh_vacancies)
 
     for vac in vacancies:
         json_saver.add_vacancy(vac)
 
-    # Фильтрация и вывод
     filtered = filter_vacancies(vacancies, filter_words, salary_min=salary_min, salary_max=salary_max)
     sorted_vac = sort_vacancies(filtered)
     top_vac = get_top_vacancies(sorted_vac, top_n)
